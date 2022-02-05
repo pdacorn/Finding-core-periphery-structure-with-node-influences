@@ -5,46 +5,13 @@ This code implements the influence-based core-periphery detection algorithm (ICP
 >Xin Shen, Sarah Aliko, Yue Han, Jeremy I Skipper, & Chengbin Peng. (2021). Finding core-periphery structures with node influences. IEEE Transactions on Network Science and Engineering, In press 10.1109/TNSE.2021.3138436.
 
 ## Running influence-based core-periphery detection algorithm (ICPA) models
-From the `Test.py` samples, we can see how to use the uploaded files.
+From the `Test.py`, we can see how to use the uploaded files.
 
-Firstly, **you may create the adjacency matrix with either of the following approaches**.
-1. NetworksX graph
-```python
-
-import scipy.io
-import matplotlib.pyplot as plt
-import networkx as nx
-import timeit
-import sys
-import numpy as np
-import matplotlib.pyplot as plt
-import csv
-import seaborn as sns
-import h5py
-import numpy as np
-datapath = '../../mat/'
-resultpath = '../..'
-# way of reading the data
-filepath = datapath + 'matrix_w2295.mat'
-data = {}
-f = h5py.File(filepath)
-for k, v in f.items():
-    data[k] = np.array(v)
-    print(k)
-    print(v)
-f.close()    
-dt0 = data['matrix']
-dt0.shape
-dt0_sparse = csr_matrix(dt0)
-```
-The returned dt0_sparse is a sparse adjacent matrix.
-
-2. edge list files
+Firstly, **you may create the adjacency matrix with either of the following approache**.
 
 Besides email-Eu-core-department-labels.txt, many other data sets are available, for example, at http://snap.stanford.edu/data
-![image](https://user-images.githubusercontent.com/50257913/151164065-0b326824-2dbd-4e58-993f-8c2cfd79bc4b.png)
 
-(see text.py line 2-10)
+(see line 2-10 in text.py)
 ```python
 import icpa_sparse_matrix
 import timeit
@@ -55,16 +22,16 @@ from scipy.sparse import csr_matrix
 dt0=readNet.Edge2Sparse('email-Eu-core-department-labels.txt')
 dt0_sparse = csr_matrix(dt0)
 ```
-The returned dt0_sparse is a sparse adjacent matrix.
+The returned dt0_sparse is a sparse adjacency matrix.
 
 Secondly, **you can obtain pair identities and core scores from our algorithm (ICPA) outputs**
 1. The parameter `corenessnum` indicates whether a node is a core or a periphery. Here, zero indicates a periphery node, and one indicates a core node.
-(see text.py line 26)
+(see line 26 in text.py)
 ``` python
 corenessnum,corescore =icpa_sparse_matrix.step3(power, influenceratio = influenceratio)
 ```
 2. The parameter of `pairidnum` indicates each node's pair id.
-(see text.py line 20)
+(see line 20 in text.py)
 ``` python
 pairidnum = icpa_sparse_matrix.step2(power,topNinfluencer = 1)
 ```
