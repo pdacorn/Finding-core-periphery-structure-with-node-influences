@@ -7,7 +7,7 @@ This code implements the influence-based core-periphery detection algorithm (ICP
 ## Running influence-based core-periphery detection algorithm (ICPA) models
 From the `Test.py`, we can see how to use the uploaded files.
 
-Firstly, **you may create the adjacency matrix with either of the following approache**.
+Firstly, **you may create the adjacency matrix with the following approache**.
 
 Besides email-Eu-core-department-labels.txt, many other data sets are available, for example, at http://snap.stanford.edu/data
 
